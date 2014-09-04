@@ -1,0 +1,66 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.5.RELEASE")
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'application'
+
+
+mainClassName = "mongoexample.MongoApp"
+
+jar {
+    baseName = 'mongodemo'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.springframework:spring-core:4.0.6.RELEASE'
+    compile 'org.springframework.data:spring-data-mongodb:1.5.4.RELEASE'
+    compile 'org.mongodb:mongo-java-driver:2.12.3'
+    compile 'org.springframework:spring-context:4.0.6.RELEASE'
+    compile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
+
+    testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+    testCompile 'org.springframework:spring-test:4.0.3.RELEASE'
+
+
+
+}
+
+
+sourceSets {
+    apply plugin: 'application'
+    apply plugin: 'groovy'
+    main{
+        groovy {
+            srcDir 'src/groovy'
+        }
+    }
+
+    test{
+        groovy {
+            srcDir 'test'
+        }
+    }
+
+}
+
+
+
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
