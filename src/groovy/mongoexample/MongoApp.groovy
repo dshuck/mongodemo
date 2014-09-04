@@ -23,7 +23,6 @@ class MongoApp {
     static void main(String[] args) {
 
         println 'Starting up MongoBoot application'
-        println mongoTemplate
 
         MongoOperations mongoOps = new MongoTemplate( new Mongo(), 'database' )
 
